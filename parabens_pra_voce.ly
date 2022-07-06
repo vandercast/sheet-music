@@ -6,10 +6,6 @@
 
 
 melodia = \relative c'' {
-\clef treble
-\time 3/4
-\tempo 4 = 80
-\key f \major
                 r2 c8. c16
     d4 c f
     e r c8. c16
@@ -21,9 +17,29 @@ melodia = \relative c'' {
     f2 r4
     }
 
+    letra = \lyricmode {
+    Parabéns pra você
+    nessa data querida
+    muitas felicidades
+    muitos anos de vida
+    }
+
 
  \score {
+ <<
+ \new Voice = voiceOne {
+ \clef treble
+ \time 3/4
+ \tempo 4 = 80
+ \key f \major
   \melodia
+  }
+  \new Lyrics \lyricsto "voiceOne" {
+  \letra!}
+  \new Lyrics \lyricsto "voiceOne" {
+  \letra
+  }
+  >>
   \layout { }
  \midi { }
  }
